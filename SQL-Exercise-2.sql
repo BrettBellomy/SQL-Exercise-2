@@ -31,12 +31,11 @@ WHERE C.Name = "Appliances" OR C.Name = "Games";
 
 /* joins: find the product name, total # sold, and total price sold,
  for Eagles: Hotel California --You may need to use SUM() */
- SELECT P.Name AS ProductName, SUM(S.Quantity) AS TotalQuantitySold, SUM(P.Price) AS TotalPriceSold
+ SELECT P.Name AS ProductName, SUM(S.Quantity) AS TotalQuantitySold, SUM(P.Price * S.Quantity) AS TotalPriceSold
  FROM Products AS P
  INNER JOIN sales AS S
  ON P.ProductID = S.ProductID
- WHERE P.NAME = "Eagles: Hotel California"
- GROUP BY P.ProductID;
+ WHERE P.NAME = "Eagles: Hotel California";
 
 /* joins: find Product name, reviewer name, rating, and comment on the Visio TV. (only return for the lowest rating!) */
 SELECT P.Name AS ProductName, R.Reviewer AS ReviewerName, R.Rating AS Rating, R.Comment AS Comment
